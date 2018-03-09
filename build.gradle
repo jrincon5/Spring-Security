@@ -4,6 +4,9 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		maven{
+			url "https://plugins.gradle.org/m2/"
+		}
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -27,6 +30,8 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-mail')
+	compile("org.springframework.boot:spring-boot-starter-security")
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile ('org.springframework.security:spring-security-web:5.0.3.RELEASE')
 	runtime('mysql:mysql-connector-java')
@@ -38,6 +43,11 @@ jar {
       attributes 'Implementation-Title': 'Gradle Quickstart',
                  'Implementation-Version': version
   }
+}
+
+jar {
+    baseName = 'gs-securing-web'
+    version =  '0.1.0'
 }
 
 repositories {
